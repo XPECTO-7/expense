@@ -1,8 +1,22 @@
+
+import 'dart:js';
+
 import 'package:expense/Pages/home_page.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-void main() {
-  runApp(const MyApp());
+import 'database/expense_database.dart';
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  //initialize db
+  await ExpenseDatabase.initialize();
+  runApp(
+    ChangeNotifierProvider(create: (context)=> ExpenseDatabase(),
+    child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -12,7 +26,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomePafge(),
+      home: HomePage(),
     );
   }
 }
