@@ -1,10 +1,6 @@
-
-import 'dart:js';
-
 import 'package:expense/Pages/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import 'database/expense_database.dart';
 
 Future<void> main() async {
